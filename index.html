@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Selector</title>
+    <script>
+        function loadFile(fileName) {
+            document.getElementById("fileContent").innerHTML = "";
+            
+            fetch(fileName)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("fileContent").innerHTML = data;
+                })
+                .catch(error => console.log(error));
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <h1>V&auml;lkommen till Hackaton!</h1>
+    <h2>Ni kommer f&aring; 5 uppgifter att l&ouml;sa p&aring; 1 timme. En uppgift &auml;r l&ouml;st n&auml;r alla test kan k&ouml;ras korrekt.</h2>
+   <!-- Countdown Timer -->
+    <div id="countdown-container">
+    <h2 id="countdown">1:00:00</h2>
+    <button id="startButton" onclick="startCountdown()">Start Countdown</button>
+    </div>
+
+    <!-- Open Website Button (Initially Hidden) -->
+    <button id="openWebsiteButton" onclick="openWebsite()">Uppgift 1</button>
+    <div id="form-container">
+    <input type="text" id="text1" placeholder="Enter validation text">
+    <button id="submitButton" onclick="submitAnswer("Uppgift2")">Submit</button>
+    </div>
+    
+
+
+    <div id="fileContent"></div>
+    <script src="scripts.js" defer></script>
+</body>
+</html>

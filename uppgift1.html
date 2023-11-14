@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Repo Downloader</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#downloadButton").click(function() {
+                var owner = "Kotik112"; // Replace with the GitHub username
+                var repo = "FizzBuzz"; // Replace with the repository name
+                var ref = "master"; // Replace with branch or tag name
+                
+                var apiUrl = `https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`;
+
+                // Trigger download by creating a temporary link
+                var link = document.createElement("a");
+                link.href = apiUrl;
+                link.download = `${repo}-${ref}.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="downloadButton">Download Repository</button>
+</body>
+</html>
